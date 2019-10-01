@@ -1,0 +1,41 @@
+`timescale 1ns / 1ps
+
+module ALU( source1,source2,ALU_CTRL,result);
+    input [15:0] source1;
+    input [15:0] source2;
+    input [3:0] ALU_CTRL;
+    output [15:0] result;
+	
+    reg [15:0] result; 
+    /* add your design */  
+    // source1 or source2 or ALU_CTRL
+
+    always @(source1 or source2 or ALU_CTRL)
+    begin 
+       if(ALU_CTRL[3:0] == 4'b0010)
+       begin
+          result = source1 + source2;
+       end
+
+       else if(ALU_CTRL[3:0] == 4'b0110)
+       begin
+         result = source1 - source2;
+       end
+
+       else if(ALU_CTRL[3:0] == 4'b0111)
+       begin
+          if(source1 < source2)
+          begin
+                result = 1;
+          end
+          else
+          begin
+                result = 0;
+          end
+       end
+    end	
+
+
+	
+
+endmodule
